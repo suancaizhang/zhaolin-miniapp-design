@@ -1,0 +1,4 @@
+{
+  "desc": "Local gallery development; no public search indexing.",
+  "rules": [{ "action": "disallow", "page": "*" }]
+}

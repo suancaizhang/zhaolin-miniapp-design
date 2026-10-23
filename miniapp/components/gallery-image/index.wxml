@@ -1,0 +1,8 @@
+<view class="frame" style="height: {{height}};">
+  <view wx:if="{{!src || failed}}" class="image-state">
+    <text>{{src ? '这张图片暂时无法载入' : '暂无可展示的图片'}}</text>
+    <t-button wx:if="{{src}}" size="medium" variant="text" theme="primary" catch:tap="retry" aria-label="重试载入图片">重试图片</t-button>
+  </view>
+  <image wx:elif="{{mounted}}" class="artwork" src="{{src}}" mode="aspectFit" show-menu-by-longpress="{{false}}" aria-label="{{alt}}" bind:error="onError" />
+  <button wx:if="{{appreciable && src && !failed}}" class="appreciate" aria-label="放大欣赏：{{alt}}" bind:tap="appreciate"><text class="hint">点图放大</text></button>
+</view>

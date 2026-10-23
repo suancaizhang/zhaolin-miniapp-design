@@ -1,0 +1,7 @@
+.gallery-heading { padding: 8px 0 0; }
+.eyebrow { display: block; margin-bottom: 12px; font-size: 13px; color: var(--gallery-accent); }
+.series-copy { padding: 16px; }
+.series-name { display: block; font-size: 18px; font-weight: 600; overflow-wrap: anywhere; }
+.series-count { display: block; margin-top: 12px; color: var(--gallery-accent); font-size: 13px; }
+.series-pressed { background: var(--gallery-soft); }
+.all-works .intro { margin: 8px 0 16px; }

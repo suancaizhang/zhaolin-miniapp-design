@@ -1,0 +1,34 @@
+{
+  "pages": ["pages/home/index", "pages/works/index", "pages/series/index", "pages/work/index"],
+  "window": {
+    "navigationStyle": "default",
+    "navigationBarTitleText": "召麐作品馆",
+    "navigationBarBackgroundColor": "#faf8f3",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f3f0ea",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "custom": false,
+    "color": "#6e685f",
+    "selectedColor": "#8f332b",
+    "backgroundColor": "#faf8f3",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/home/index", "text": "精选", "iconPath": "assets/tab-gallery.png", "selectedIconPath": "assets/tab-gallery-selected.png" },
+      { "pagePath": "pages/works/index", "text": "作品", "iconPath": "assets/tab-works.png", "selectedIconPath": "assets/tab-works-selected.png" }
+    ]
+  },
+  "usingComponents": {
+    "t-button": "/miniprogram_npm/tdesign-miniprogram/button/button",
+    "t-tag": "/miniprogram_npm/tdesign-miniprogram/tag/tag",
+    "t-loading": "/miniprogram_npm/tdesign-miniprogram/loading/loading",
+    "t-empty": "/miniprogram_npm/tdesign-miniprogram/empty/empty",
+    "gallery-image": "/components/gallery-image/index",
+    "work-card": "/components/work-card/index",
+    "content-state": "/components/content-state/index"
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

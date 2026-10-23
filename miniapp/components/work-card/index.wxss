@@ -1,0 +1,6 @@
+:host { display: block; }
+.card { overflow: hidden; border: 1px solid var(--gallery-border, #dcd7ce); border-radius: 12px; background: var(--gallery-surface, #faf8f3); }
+.card-link { display: block; min-height: 44px; padding: 16px; color: var(--gallery-text, #292721); }
+.card-pressed { background: var(--gallery-soft, #f4e8e3); }
+.title { display: block; margin-bottom: 8px; font-size: 17px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+.open { display: block; margin-top: 8px; color: var(--gallery-accent, #8f332b); font-size: 13px; }

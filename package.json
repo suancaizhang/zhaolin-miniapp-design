@@ -1,0 +1,22 @@
+{
+  "name": "zhaolin-gallery-local",
+  "version": "0.1.0-local",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@11.19.1",
+  "engines": { "node": ">=24.22.1 <25" },
+  "workspaces": ["server", "admin", "miniapp"],
+  "scripts": {
+    "start": "npm run start --workspace server",
+    "dev:admin": "npm run dev --workspace admin",
+    "check": "npm run check --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "build": "npm run build --workspace admin && npm run build:components --workspace miniapp",
+    "configure:miniapp": "node scripts/configure-miniapp.mjs",
+    "create:maintainer": "node scripts/create-maintainer.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "typescript": "7.0.2"
+  }
+}

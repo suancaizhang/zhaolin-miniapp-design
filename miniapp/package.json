@@ -1,0 +1,11 @@
+{
+  "name": "@zhaolin/miniapp",
+  "version": "0.1.0-local",
+  "private": true,
+  "scripts": {
+    "check": "tsc -p tsconfig.json --noEmit",
+    "build:components": "node ../scripts/build-miniapp.mjs"
+  },
+  "dependencies": { "tdesign-miniprogram": "1.17.0" },
+  "devDependencies": { "miniprogram-api-typings": "5.2.3" }
+}

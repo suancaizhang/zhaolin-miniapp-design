@@ -1,0 +1,14 @@
+<view class="page">
+  <text class="page-title">全部作品</text>
+  <text class="intro">从整幅画面开始欣赏。</text>
+  <content-state wx:if="{{state !== 'ready'}}" state="{{state}}" message="{{error}}" bind:retry="load" />
+  <block wx:else>
+    <view wx:if="{{refreshing}}" class="refreshing">正在更新作品目录…</view>
+    <view wx:if="{{error}}" class="feedback"><text>{{error}} 当前保留上次载入的内容。</text><t-button variant="text" theme="primary" bind:tap="load">重新载入</t-button></view>
+    <view class="section">
+      <view class="section-heading"><text class="muted">{{works.length}} 件作品</text></view>
+      <view wx:if="{{works.length}}" class="catalog-grid"><view wx:for="{{works}}" wx:key="id" class="catalog-item"><work-card work="{{item}}" /></view></view>
+      <content-state wx:else state="empty" message="暂无作品，作品馆内容正在整理中。" />
+    </view>
+  </block>
+</view>

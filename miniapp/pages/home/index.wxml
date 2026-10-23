@@ -1,0 +1,30 @@
+<view class="page">
+  <view class="gallery-heading">
+    <text class="eyebrow">召麐 · 个人作品馆</text>
+    <text class="page-title">看见画面，也看见创作。</text>
+    <text class="intro">从作品整体，到局部与创作记录。</text>
+  </view>
+  <content-state wx:if="{{state !== 'ready'}}" state="{{state}}" message="{{error}}" bind:retry="load" />
+  <block wx:else>
+    <view wx:if="{{refreshing}}" class="refreshing">正在更新作品馆…</view>
+    <view wx:if="{{error}}" class="feedback"><text>{{error}} 当前保留上次载入的内容。</text><t-button variant="text" theme="primary" bind:tap="load">重新载入</t-button></view>
+    <view class="section">
+      <view class="section-heading"><text class="section-title">精选作品</text><text class="muted">{{featured.length}} 件</text></view>
+      <view wx:if="{{featured.length}}" class="stack"><work-card wx:for="{{featured}}" wx:key="id" work="{{item}}" large /></view>
+      <content-state wx:else state="empty" message="{{count ? '暂未设置精选作品，可前往全部作品欣赏。' : '暂无作品，作品馆内容正在整理中。'}}" />
+    </view>
+    <view class="section">
+      <view class="section-heading"><text class="section-title">系列</text></view>
+      <view wx:if="{{series.length}}" class="stack">
+        <view wx:for="{{series}}" wx:key="id" class="surface series-card">
+          <navigator url="{{item.path}}" hover-class="series-pressed" aria-label="浏览系列：{{item.name}}">
+            <gallery-image wx:if="{{item.coverImageId}}" src="{{item.coverUrl}}" alt="{{item.name}}系列封面" height="180px" />
+            <view class="series-copy"><text class="series-name">{{item.name}}</text><text class="body-copy muted">{{item.description}}</text><text class="series-count">{{item.count}} 件作品 · 浏览系列 ›</text></view>
+          </navigator>
+        </view>
+      </view>
+      <content-state wx:else state="empty" message="暂无系列" />
+    </view>
+    <view class="section all-works"><text class="section-title">全部作品</text><text class="intro">{{count}} 件作品，完整浏览作品馆。</text><t-button theme="primary" size="large" block bind:tap="openCatalog">浏览全部作品</t-button></view>
+  </block>
+</view>

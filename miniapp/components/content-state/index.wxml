@@ -1,0 +1,9 @@
+<view class="state">
+  <t-loading wx:if="{{state === 'loading'}}" theme="spinner" text="正在载入作品" />
+  <t-empty wx:else description="{{message}}">
+    <view slot="action" class="state-actions">
+      <t-button wx:if="{{state === 'error' || state === 'notfound'}}" theme="primary" variant="outline" size="large" bind:tap="retry">重新载入</t-button>
+      <t-button wx:if="{{back}}" variant="text" size="large" bind:tap="goBack">返回作品目录</t-button>
+    </view>
+  </t-empty>
+</view>

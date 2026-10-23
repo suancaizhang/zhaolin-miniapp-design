@@ -1,0 +1,13 @@
+.tools/
+node_modules/
+**/node_modules/
+**/dist/
+.env
+.env.*
+!.env.example
+project.private.config.json
+data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+**/miniprogram_npm/

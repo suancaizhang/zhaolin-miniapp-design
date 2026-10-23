@@ -1,0 +1,33 @@
+<view class="page detail-page">
+  <view class="back-row"><t-button variant="text" bind:tap="backToGallery">‹ {{backLabel}}</t-button></view>
+  <content-state wx:if="{{state !== 'ready'}}" state="{{state}}" message="{{error}}" back bind:retry="load" bind:back="openCatalog" />
+  <block wx:else>
+    <view class="surface overall"><gallery-image src="{{overallUrl}}" alt="{{overallAlt}}" height="420px" appreciable bind:appreciate="appreciate" /><view class="image-caption"><t-tag variant="light">整体</t-tag></view></view>
+    <view class="work-intro">
+      <text class="page-title">{{work.title}}</text>
+      <t-tag theme="primary" variant="light">{{work.status}}</t-tag>
+      <text class="body-copy description">{{work.description}}</text>
+      <view wx:if="{{work.year || work.material || work.dimensions}}" class="metadata">
+        <view wx:if="{{work.year}}"><text class="metadata-label">创作年份</text><text>{{work.year}}</text></view>
+        <view wx:if="{{work.material}}"><text class="metadata-label">材料</text><text>{{work.material}}</text></view>
+        <view wx:if="{{work.dimensions}}"><text class="metadata-label">尺寸</text><text>{{work.dimensions}}</text></view>
+      </view>
+      <button class="share-button" open-type="share" aria-label="将这件作品转发给微信朋友">转发作品给朋友</button>
+    </view>
+    <view wx:if="{{previewError}}" class="feedback"><text>{{previewError}}</text><t-button variant="text" theme="primary" bind:tap="retryPreview">重试图片欣赏</t-button><t-button variant="text" bind:tap="load">重新载入作品</t-button></view>
+    <view class="section">
+      <view class="section-heading"><text class="section-title">创作记录</text></view>
+      <block wx:if="{{groups.length}}">
+        <view wx:for="{{groups}}" wx:key="stage" wx:for-item="group" class="stage">
+          <text class="stage-title">{{group.stage}}</text>
+          <view wx:for="{{group.records}}" wx:key="id" wx:for-item="record" class="surface record">
+            <gallery-image src="{{record.url}}" alt="{{record.alt}}" height="320px" appreciable bind:appreciate="appreciate" />
+            <view class="record-copy"><view class="record-meta"><t-tag variant="light">{{record.view}}</t-tag><text wx:if="{{record.date}}" class="record-date">{{record.date}}</text></view><text wx:if="{{record.caption}}" class="body-copy">{{record.caption}}</text></view>
+          </view>
+        </view>
+      </block>
+      <content-state wx:else state="empty" message="暂无创作记录" />
+    </view>
+    <view class="actions"><t-button variant="outline" size="large" bind:tap="backToGallery">{{backLabel}}</t-button></view>
+  </block>
+</view>

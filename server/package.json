@@ -1,0 +1,12 @@
+{
+  "name": "@zhaolin/server",
+  "version": "0.1.0-local",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.ts",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": { "sharp": "0.35.5" }
+}

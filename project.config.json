@@ -4,20 +4,44 @@
   "miniprogramRoot": "miniapp/",
   "libVersion": "3.17.5",
   "setting": {
-    "useCompilerPlugins": ["typescript"],
+    "useCompilerPlugins": [
+      "typescript"
+    ],
     "es6": true,
     "enhance": true,
     "minified": true,
     "minifyWXSS": true,
     "minifyWXML": true,
     "ignoreUploadUnusedFiles": true,
-    "uploadWithSourceMap": false
+    "uploadWithSourceMap": false,
+    "postcss": false,
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "condition": false,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
   },
   "packOptions": {
     "ignore": [
-      { "type": "file", "value": "package.json" },
-      { "type": "file", "value": "tsconfig.json" }
+      {
+        "value": "package.json",
+        "type": "file"
+      },
+      {
+        "value": "tsconfig.json",
+        "type": "file"
+      }
     ],
-    "include": []
-  }
+    "include": [{ "type": "folder", "value": "assets/works" }]
+  },
+  "appid": "wx91fac3055805eb4e",
+  "simulatorPluginLibVersion": {},
+  "editorSetting": {}
 }

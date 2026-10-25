@@ -1,4 +1,4 @@
-import { ApiError, errorMessage, fetchSeries } from '../../lib/api';
+import { NotFoundError, errorMessage, fetchSeries } from '../../lib/catalog';
 import { workCard } from '../../lib/presentation';
 import type { WorkCard } from '../../lib/presentation';
 import { backToGallery, openCatalog } from '../../lib/navigation';
@@ -9,13 +9,13 @@ Page({
     state: 'loading', error: '', loaded: false, refreshing: false,
     series: null as GallerySeries | null,
     works: [] as WorkCard[],
-    backLabel: '返回作品目录',
+    backLabel: '返回图集',
   },
   seriesId: '',
   requestVersion: 0,
   onLoad(query: Record<string, string | undefined>) {
     this.seriesId = query.id || '';
-    this.setData({ series: null, works: [], loaded: false, backLabel: getCurrentPages().length > 1 ? '返回上一级' : '返回作品目录' });
+    this.setData({ series: null, works: [], loaded: false, backLabel: getCurrentPages().length > 1 ? '返回上一级' : '返回图集' });
   },
   onShow() { void this.load(); },
   onUnload() { this.requestVersion += 1; },
@@ -37,7 +37,7 @@ Page({
       wx.setNavigationBarTitle({ title: result.series.name });
     } catch (error) {
       if (version !== this.requestVersion) return;
-      if (error instanceof ApiError && error.status === 404) {
+      if (error instanceof NotFoundError) {
         this.setData({ state: 'notfound', error: '未找到这个系列。', series: null, works: [], loaded: false, refreshing: false });
       } else {
         this.setData({ state: this.data.loaded ? 'ready' : 'error', error: errorMessage(error), refreshing: false });

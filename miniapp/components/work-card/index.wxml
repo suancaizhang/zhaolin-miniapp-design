@@ -2,7 +2,6 @@
   <gallery-image src="{{work.coverUrl}}" alt="{{work.coverAlt}}" height="{{large ? '320px' : '208px'}}" />
   <view class="card-link">
     <text class="title">{{work.title}}</text>
-    <t-tag theme="primary" variant="light">{{work.status}}</t-tag>
     <text class="open">查看作品 ›</text>
   </view>
 </navigator>

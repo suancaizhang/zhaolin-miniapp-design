@@ -1,5 +1,5 @@
 <view class="page detail-page">
-  <view class="back-row"><t-button variant="text" bind:tap="backToGallery">‹ {{backLabel}}</t-button></view>
+  <view class="back-row"><button class="back-link" size="mini" hover-class="back-link--pressed" bindtap="backToGallery" aria-label="{{backLabel}}"><view class="back-chevron" aria-hidden="true"></view><text>{{backLabel}}</text></button></view>
   <content-state wx:if="{{state !== 'ready'}}" state="{{state}}" message="{{error}}" back bind:retry="load" bind:back="openCatalog" />
   <block wx:else>
     <text class="page-title">{{series.name}}</text>
@@ -7,9 +7,9 @@
     <view wx:if="{{refreshing}}" class="refreshing">正在更新系列…</view>
     <view wx:if="{{error}}" class="feedback"><text>{{error}} 当前保留上次载入的内容。</text><t-button variant="text" theme="primary" bind:tap="load">重新载入</t-button></view>
     <view class="section">
-      <view class="section-heading"><text class="section-title">系列作品</text><text class="muted">{{works.length}} 件</text></view>
+      <view class="section-heading"><text class="section-title">系列图像</text><text class="muted">{{works.length}} 幅</text></view>
       <view wx:if="{{works.length}}" class="catalog-grid"><view wx:for="{{works}}" wx:key="id" class="catalog-item"><work-card work="{{item}}" /></view></view>
-      <content-state wx:else state="empty" message="本系列暂无作品" back bind:back="openCatalog" />
+      <content-state wx:else state="empty" message="本系列暂无图像" back bind:back="openCatalog" />
     </view>
   </block>
 </view>

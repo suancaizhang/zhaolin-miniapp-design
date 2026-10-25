@@ -1,11 +1,10 @@
 <view class="page detail-page">
-  <view class="back-row"><t-button variant="text" bind:tap="backToGallery">‹ {{backLabel}}</t-button></view>
+  <view class="back-row"><button class="back-link" size="mini" hover-class="back-link--pressed" bindtap="backToGallery" aria-label="{{backLabel}}"><view class="back-chevron" aria-hidden="true"></view><text>{{backLabel}}</text></button></view>
   <content-state wx:if="{{state !== 'ready'}}" state="{{state}}" message="{{error}}" back bind:retry="load" bind:back="openCatalog" />
   <block wx:else>
-    <view class="surface overall"><gallery-image src="{{overallUrl}}" alt="{{overallAlt}}" height="420px" appreciable bind:appreciate="appreciate" /><view class="image-caption"><t-tag variant="light">整体</t-tag></view></view>
+    <view class="surface overall"><gallery-image src="{{overallUrl}}" alt="{{overallAlt}}" height="420px" appreciable bind:appreciate="appreciate" /><view class="image-caption"><t-tag variant="light">{{overallView}}</t-tag></view></view>
     <view class="work-intro">
       <text class="page-title">{{work.title}}</text>
-      <t-tag theme="primary" variant="light">{{work.status}}</t-tag>
       <text class="body-copy description">{{work.description}}</text>
       <view wx:if="{{work.year || work.material || work.dimensions}}" class="metadata">
         <view wx:if="{{work.year}}"><text class="metadata-label">创作年份</text><text>{{work.year}}</text></view>
@@ -16,7 +15,7 @@
     </view>
     <view wx:if="{{previewError}}" class="feedback"><text>{{previewError}}</text><t-button variant="text" theme="primary" bind:tap="retryPreview">重试图片欣赏</t-button><t-button variant="text" bind:tap="load">重新载入作品</t-button></view>
     <view class="section">
-      <view class="section-heading"><text class="section-title">创作记录</text></view>
+      <view class="section-heading"><text class="section-title">画面观察</text></view>
       <block wx:if="{{groups.length}}">
         <view wx:for="{{groups}}" wx:key="stage" wx:for-item="group" class="stage">
           <text class="stage-title">{{group.stage}}</text>
@@ -26,7 +25,7 @@
           </view>
         </view>
       </block>
-      <content-state wx:else state="empty" message="暂无创作记录" />
+      <content-state wx:else state="empty" message="暂无画面观察记录" />
     </view>
     <view class="actions"><t-button variant="outline" size="large" bind:tap="backToGallery">{{backLabel}}</t-button></view>
   </block>

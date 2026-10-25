@@ -1,4 +1,4 @@
-import { errorMessage, fetchCatalog, seriesCoverUrl } from '../../lib/api';
+import { errorMessage, fetchCatalog, seriesCoverUrl } from '../../lib/catalog';
 import { workCard } from '../../lib/presentation';
 import type { WorkCard } from '../../lib/presentation';
 import { openCatalog } from '../../lib/navigation';

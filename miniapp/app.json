@@ -16,7 +16,7 @@
     "borderStyle": "white",
     "list": [
       { "pagePath": "pages/home/index", "text": "精选", "iconPath": "assets/tab-gallery.png", "selectedIconPath": "assets/tab-gallery-selected.png" },
-      { "pagePath": "pages/works/index", "text": "作品", "iconPath": "assets/tab-works.png", "selectedIconPath": "assets/tab-works-selected.png" }
+      { "pagePath": "pages/works/index", "text": "图集", "iconPath": "assets/tab-works.png", "selectedIconPath": "assets/tab-works-selected.png" }
     ]
   },
   "usingComponents": {

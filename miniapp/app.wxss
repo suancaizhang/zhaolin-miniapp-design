@@ -29,7 +29,7 @@ page {
 }
 view, navigator, button { box-sizing: border-box; }
 .page { padding: 24px 16px 32px; }
-.detail-page { padding-bottom: calc(32px + env(safe-area-inset-bottom)); }
+.detail-page { padding-top: 8px; padding-bottom: calc(32px + env(safe-area-inset-bottom)); }
 .page-title { display: block; margin-bottom: 8px; font-size: 22px; font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; }
 .intro, .muted { color: var(--gallery-muted); }
 .intro { display: block; margin: 0; }
@@ -45,5 +45,9 @@ view, navigator, button { box-sizing: border-box; }
 .refreshing { margin: 12px 0; color: var(--gallery-muted); font-size: 13px; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
 .actions > t-button { min-width: 120px; }
-.back-row { margin-bottom: 16px; }
+.back-row { display: flex; align-items: center; justify-content: flex-start; margin-bottom: 8px; }
+.back-row > .back-link { display: inline-flex; flex: none; align-items: center; justify-content: flex-start; gap: 8px; width: auto; min-height: 44px; margin: 0 auto 0 0; padding: 0 10px 0 0; border: 0; border-radius: 6px; background: transparent; color: var(--gallery-muted); font-size: 14px; font-weight: 500; line-height: 20px; text-align: left; }
+.back-row > .back-link::after { border: 0; }
+.back-row > .back-link--pressed { background: var(--gallery-soft); color: var(--gallery-accent); }
+.back-chevron { flex: none; width: 8px; height: 8px; margin-left: 3px; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); }
 @media (max-width: 350px) { .catalog-item { width: 100%; } }

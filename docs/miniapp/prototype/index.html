@@ -11,10 +11,10 @@
 </head>
 <body>
   <header class="prototype-header">
-    <div class="header-topline"><span class="eyebrow">召麐个人作品馆</span><span class="evidence-label">设计原型 · 未上线</span></div>
+    <div class="header-topline"><span class="eyebrow">召麐个人作品馆</span><span class="evidence-label">2026-10-22 历史设计快照 · B已确认</span></div>
     <h1>以作品为中心，从欣赏到整理。</h1>
-    <p>B方向：大图、暖白、克制的朱红。左侧走一遍观众流程，右侧试一次维护内容。</p>
-    <nav class="document-links" aria-label="设计资料"><a href="../design-system.md">设计规格与组件映射</a><a href="../ui-options/index.html">回看三套首页方案</a></nav>
+    <p>B方向：大图、暖白、克制的朱红；用户已于2026-10-22确认完整设计。左侧观众流程和右侧编辑表单保留当时的演示数据与交互，不代表当前静态小程序、真实后台或平台发布状态；当前实现与恢复流程以项目README为准。</p>
+    <nav class="document-links" aria-label="设计资料"><a href="../../../README.md">当前实现与恢复流程</a><a href="../design-system.md">设计规格与组件映射</a><a href="../ui-options/index.html">回看三套首页方案</a></nav>
   </header>
 
   <section class="scenario-toolbar" aria-label="原型场景控制">
@@ -58,16 +58,16 @@
         <div class="work-selector"><label for="admin-work">当前作品</label><select id="admin-work" aria-label="选择要维护的作品"></select></div>
         <div id="admin-content" class="admin-content"></div>
       </div>
-      <p class="admin-boundary">表单是可交互的本地设计演示：保存只更新本页，选图不上传，未接入真实账号或后台。登录方式、托管、数据库与图片存储仍未决定。</p>
+      <p class="admin-boundary">表单是可交互的本地设计演示：保存只更新本页，选图不上传，未接入真实账号或后台。当时待定的身份与存储方案后来已落实为独立本地后台；当前静态小程序不连接它，本表单也不是该后台。</p>
     </section>
   </main>
 
   <noscript><p class="script-warning">请启用JavaScript后重新打开本地原型，才能查看页面、表单与状态。</p></noscript>
 
   <footer class="prototype-footer">
-    <section class="content-boundary"><h2>演示内容，不冒充作者确认</h2><p>配图来自既有封面索引 #01、#03、#15，不是作者交付原图。名称、系列归属、创作状态、精选顺序及阶段记录的组合仅用于界面演示，不构成真实作品归并；说明参考已有图像描述，不冒充作者自述。未获资料的尺寸、材料、年份与实际创作日期不编造。</p><p>本页只展示少量样例，不表示43条素材已归并或导入。正式内容以作者确认和交付为准。</p></section>
-    <section><h2>这一步确认什么</h2><p>请确认首页、作品目录与系列、作品详情、图片欣赏及后台核心表单是否符合使用习惯。加载、空数据、失败、未获后台授权状态可通过上方场景控件查看；后台修改保存后，可在左侧检查同一份内容。</p><p>原型与微信原生组件、系统字体、安全区、权限弹窗和不同机型的最终表现可能有差异；它不是最终小程序。真实微信转发、上传、服务端权限、并发与持久化不由本页证明。</p></section>
-    <p class="verification-note">浏览器实际视觉与DOM交互待用户查看；微信L1—L7均未验证。HTML渲染或模型冒烟不能冒充微信编译、真机、体验版或正式环境验证。</p>
+    <section class="content-boundary"><h2>演示内容，不冒充作者确认</h2><p>配图来自既有封面索引 #01、#03、#15，不是作者交付原图。名称、系列归属、创作状态、精选顺序及阶段记录的组合仅用于界面演示，不构成真实作品归并；说明参考已有图像描述，不冒充作者自述。未获资料的尺寸、材料、年份与实际创作日期不编造。</p><p>本页只展示少量样例，不表示43条素材已归并或导入。仓库内可查<a href="../../../server/source-index.json">43条待确认来源笔记索引</a>和<a href="../ui-options/assets/source-01-xiwangmu.jpg">本地演示参考图</a>；当前静态素材另见<a href="../../../materials/xiaohongshu/sources.json">采集清单</a>，其编号不证明与来源笔记的对应关系。正式内容以作者确认和交付为准。</p></section>
+    <section><h2>历史设计确认范围</h2><p>当时确认首页、作品目录与系列、作品详情、图片欣赏及后台核心表单。加载、空数据、失败、未获后台授权状态可通过上方场景控件回看；后台修改保存后，可在左侧检查同一份演示内容。</p><p>原型与微信原生组件、系统字体、安全区、权限弹窗和不同机型的最终表现可能有差异；它不是最终小程序。真实微信转发、上传、服务端权限、并发与持久化不由本页证明。</p></section>
+    <p class="verification-note">历史HTML演示不证明当前微信运行或发布状态；本文源码核对本身不是运行证据。最新检查、构建、测试和浏览器核对结果见<a href="../test-report.md">测试报告</a>，最新上传、审核、备案与正式发布状态未获确认。</p>
   </footer>
 </body>
 </html>

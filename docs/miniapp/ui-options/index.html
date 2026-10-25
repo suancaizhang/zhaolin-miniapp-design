@@ -10,9 +10,9 @@
 </head>
 <body>
   <header class="page-header">
-    <div class="eyebrow">召麐个人作品馆 / 设计方向</div>
+    <div class="eyebrow">召麐个人作品馆 / 2026-10-22 历史设计快照</div>
     <h1>同一座作品馆，三种观看方式。</h1>
-    <p class="intro">先比较首页的气质和阅读节奏。三套使用相同内容、相同入口，不代表最终设计已确认。</p>
+    <p class="intro">保留当时 A/B/C 首页方向比较；用户已于2026-10-22选择B并确认后续完整设计。这里的样例、状态和“精选 / 作品”导航属于历史演示；当前静态小程序为“精选 / 图集”，实现与恢复流程以<a href="../../../README.md">项目README</a>及<a href="../design-system.md">设计系统</a>为准。</p>
   </header>
 
   <section class="review-tools" aria-label="比较显示设置">
@@ -101,18 +101,18 @@
   <noscript><p class="script-warning">当前浏览器未启用 JavaScript。请启用后重新打开，才能显示三套作品内容和交互。</p></noscript>
 
   <section class="review-notes" aria-labelledby="review-title">
-    <h2 id="review-title">看完后，只需要决定一个方向</h2>
-    <p>回复“选 A / 选 B / 选 C”；也可以明确组合，例如“B 的大图，配 C 的展签”。暂不确定时，说明哪一处喜欢、哪一处不喜欢。</p>
+    <h2 id="review-title">历史方向选择记录</h2>
+    <p>已选B：TDesign品牌定制。三套画布保留用于回看当时的气质与阅读节奏，不再要求重新选择，也不代表当前30图静态小程序的完整页面。</p>
     <div class="notice"><strong>素材与事实边界</strong><p>三张图片裁自已有封面索引，分别对应公开笔记 #01、#03、#15；不是作者交付原图。图像描述来自已有整理报告；界面里的名称是描述性暂名，系列归属、精选顺序仅用于比较，不代表作品归并已确认。未推断尺寸、材料、创作年份或完成状态。</p></div>
     <p class="prototype-limit">这是首页方向比较，不是完整高保真原型，也不是可运行的小程序。微信原生组件、字体、安全区、系统弹窗和不同机型的最终表现，以开发者工具和安卓、iPhone 真机为准。本页面没有真实登录、上传、分享或网络请求。</p>
     <details class="source-details">
       <summary>查看来源、组件映射与未验证项</summary>
-      <p>参考核验日期：2026-10-22。未安装组件依赖；版本为所读取官方仓库的快照，不表示生产环境已锁定版本。三套为候选方向，不混用组件库；选定后只采用一个主组件体系。</p>
+      <p>以下参考核验与设计映射记录于2026-10-22，仅描述当时未安装依赖的候选比较阶段。后续工程已固定TDesign MiniProgram 1.17.0；当前组件、数据与验证边界见设计系统和项目README。</p>
       <ul>
         <li><a href="https://developers.weixin.qq.com/miniprogram/design/" target="_blank" rel="noreferrer">微信官方小程序设计指南</a>：重点突出、导航明确、胶囊避让、2—5项标签导航、系统字体、触控与375px基准。</li>
         <li><a href="https://github.com/Tencent/weui-wxss" target="_blank" rel="noreferrer">WeUI WXSS</a>：官方仓库 package.json 快照为2.6.26；<a href="https://github.com/Tencent/weui-wxss/blob/master/LICENSE.txt" target="_blank" rel="noreferrer">许可证</a>声明主体为 MIT、第三方依赖需各自遵循许可。本页面只参考布局，不复制库源码。</li>
         <li><a href="https://github.com/Tencent/tdesign-miniprogram" target="_blank" rel="noreferrer">TDesign MiniProgram</a>：官方仓库组件包快照为1.17.0；<a href="https://github.com/Tencent/tdesign-miniprogram/blob/develop/LICENSE" target="_blank" rel="noreferrer">MIT 许可证</a>。B 为其组件模式的 HTML 示意，未声称已运行小程序组件。</li>
-        <li>素材依据：<a href="../../../../zhaolin-all-image-notes-20261022.md">43篇图文整理报告</a>、<a href="../../../../zhaolin-notes-cover-01.png">封面索引01—15</a>。图片仅用于本地设计比较，正式内容待作者提供与确认。</li>
+        <li>仓库资料：<a href="../../../server/source-index.json">43条待确认来源笔记索引</a>；本页演示配图为<a href="assets/source-01-xiwangmu.jpg">西王母参考图</a>、<a href="assets/source-03-dunhuang.jpg">敦煌参考图</a>、<a href="assets/source-15-hand.jpg">手势参考图</a>。索引不是43件已确认作品，也不证明当前静态30张封面的来源归并；正式内容待作者确认。</li>
         <li>底部导航图标：本次绘制的项目本地72×72 PNG，精选/作品均提供普通态与选中态；无需外部图标字体或远程资源。</li>
       </ul>
       <div class="mapping-wrap"><table>
@@ -126,7 +126,7 @@
           <tr><td>加载、空、错误</td><td>原生反馈布局，B 可用 TDesign loading / empty</td><td>本地状态演示；重试恢复正常内容，不连接后台</td></tr>
         </tbody>
       </table></div>
-      <p>未验证：浏览器实际视觉、真实微信编译与模拟器、安卓、iPhone、体验版、正式环境；授权与后台表单不属于本次首页比较，完整原型阶段再按选定需求覆盖。</p>
+      <p>当时的首页比较不覆盖真实后台、微信编译、真机或平台发布验收；后续已完成B方向完整原型。本文源码核对本身不是运行证据，最新检查、构建、测试及浏览器核对结果见<a href="../test-report.md">测试报告</a>，微信各层级须分别取得实际证据。</p>
     </details>
   </section>
 </body>

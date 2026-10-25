@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { access, cp, lstat, mkdir, mkdtemp, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
@@ -12,10 +13,21 @@ if (metadata.version !== '1.17.0') {
   throw new Error(`Expected tdesign-miniprogram 1.17.0; installed ${metadata.version}. Install the locked workspace dependencies first.`);
 }
 const distribution = join(packageRoot, 'miniprogram_dist');
-for (const component of ['button', 'tag', 'loading', 'empty']) {
-  for (const extension of ['js', 'json', 'wxml', 'wxss']) {
-    await access(join(distribution, component, `${component}.${extension}`));
-  }
+// Runtime dependency closure for the pinned TDesign 1.17.0 entry components.
+const runtimeFiles = ['button', 'tag', 'loading', 'empty', 'icon', 'image'].flatMap(component => [
+  ...['js', 'json', 'wxml', 'wxss'].map(extension => `${component}/${component}.${extension}`),
+  `${component}/props.js`,
+]);
+runtimeFiles.push(
+  'common/config.js', 'common/utils.js', 'common/validator.js', 'common/version.js', 'common/wechat.js', 'common/utils.wxs',
+  'common/src/index.js', 'common/src/superComponent.js', 'common/src/flatTool.js',
+  'common/src/instantiationDecorator.js', 'common/src/control.js',
+  'common/template/icon.wxml', 'common/style/index.wxss', 'miniprogram_npm/tslib/index.js',
+);
+for (const file of runtimeFiles) await access(join(distribution, file));
+const font = await readFile(join(root, 'materials/tdesign-icons/t.woff'));
+if (createHash('sha256').update(font).digest('hex') !== '377024275d01176d32461000713af752fbefb0d2520c49b0aeda82a3a3150b54') {
+  throw new Error('The pinned TDesign icon font checksum does not match.');
 }
 const licenseName = (await readdir(packageRoot)).find((name) => /^licen[cs]e(?:\.md|\.txt)?$/i.test(name));
 if (!licenseName) throw new Error('Installed TDesign package is missing its license; refusing to vendor without it.');
@@ -56,7 +68,17 @@ const previous = `${staging}.previous`;
 let staged = true;
 let movedPrevious = false;
 try {
-  await cp(distribution, staging, { recursive: true });
+  for (const file of runtimeFiles) {
+    await mkdir(dirname(join(staging, file)), { recursive: true });
+    await cp(join(distribution, file), join(staging, file));
+  }
+  const iconStylePath = join(staging, 'icon/icon.wxss');
+  const iconStyle = await readFile(iconStylePath, 'utf8');
+  const fontStart = iconStyle.indexOf('@font-face{');
+  const fontEnd = iconStyle.indexOf('}', fontStart);
+  if (fontStart < 0 || fontEnd < 0) throw new Error('The pinned TDesign icon stylesheet has changed.');
+  const localFont = `@font-face{font-family:t;src:url(data:font/woff;base64,${font.toString('base64')}) format('woff');font-weight:400;font-style:normal;}`;
+  await writeFile(iconStylePath, iconStyle.slice(0, fontStart) + localFont + iconStyle.slice(fontEnd + 1));
   await cp(join(packageRoot, licenseName), join(staging, licenseName));
   await writeFile(join(staging, marker), ownership);
   await rejectLinks(staging);
@@ -78,5 +100,5 @@ try {
 } finally {
   if (staged) await rm(staging, { recursive: true });
 }
-// A complete, owned tree is now ready for the user's Developer Tools import.
-console.log(`Vendored real tdesign-miniprogram ${metadata.version} distribution and ${licenseName} into miniapp/miniprogram_npm.`);
+// Only the required components, their dependencies, local font and license are shipped.
+console.log(`Vendored ${runtimeFiles.length} TDesign ${metadata.version} runtime files, offline icon font and ${licenseName}.`);
